@@ -11,11 +11,11 @@ module.exports = {
         },
         {
             id:2,
-            name: "Ed She 02",
+            name: "Ed Sheran 02",
             event_date: "2022-05-26T16:20:00",
             image_url: "https://images.sk-static.com/images/media/profile_images/artists/2083334/huge_avatar",
             created_at: "2022-05-26T16:20:10",
-            available_spots: 20,
+            available_spots: 22,
             price: 220
         },
         {

@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { events, spots } = require("./data");
-const { METHODS } = require("http");
+const { method } = require("http");
 
 const app = express();
 
@@ -48,6 +48,6 @@ app.post("/events/:eventId/reserve", async (req, res) => {
 });
 
 const port = 8000;
-app.listen((port), () =>{
-    console.log('Server is running on port ${port}');
-})
+app.listen(port, () =>{
+    console.log(`Server is running on port ${port}`);
+});
