@@ -2,30 +2,30 @@ module.exports = {
     events:[
         {
             id:1,
-            name: "Ed Sheeran",
-            date: "2022-05-26T16:00:00",
-            image: "https://images.sk-static.com/images/media/profile_images/artists/2083334/huge_avatar",
-            created_at: "2022-05-26T16:20:10",
+            name: "Ed Sheer 01",
+            event_date: "2022-05-25T15:40:00",
+            image_url: "https://images.sk-static.com/images/media/profile_images/artists/2083334/huge_avatar",
+            created_at: "2022-05-25T16:20:10",
             available_spots: 10,
-            price: 100
+            price: 110
         },
         {
             id:2,
-            name: "Ed Sheeran",
-            date: "2022-05-26T16:00:00",
-            image: "https://images.sk-static.com/images/media/profile_images/artists/2083334/huge_avatar",
+            name: "Ed She 02",
+            event_date: "2022-05-26T16:20:00",
+            image_url: "https://images.sk-static.com/images/media/profile_images/artists/2083334/huge_avatar",
             created_at: "2022-05-26T16:20:10",
             available_spots: 20,
-            price: 200
+            price: 220
         },
         {
             id:3,
-            name: "Ed Sheeran",
-            date: "2022-05-26T16:00:00",
-            image: "https://images.sk-static.com/images/media/profile_images/artists/2083334/huge_avatar",
-            created_at: "2022-05-26T16:20:10",
+            name: "Ed Heeran 03",
+            event_date: "2022-05-27T16:30:00",
+            image_url: "https://images.sk-static.com/images/media/profile_images/artists/2083334/huge_avatar",
+            created_at: "2022-05-27T16:20:10",
             available_spots: 30,
-            price: 300
+            price: 330
         }
     ],
     spots:[

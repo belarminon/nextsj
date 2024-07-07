@@ -14,7 +14,7 @@ app.get("/events", async (req, res) => {
 app.get("/events/:eventId", async (req, res) => {
     return res.json({
         event: events.find((event) => event.id === parseInt(req.params.eventId)),
-        spots: spots.filter((event) => event.id === parseInt(req.params.eventId),)
+        spots: spots.filter((spots) => spots.event_id === parseInt(req.params.eventId),)
     });
 });
 
@@ -48,6 +48,6 @@ app.post("/events/:eventId/reserve", async (req, res) => {
 });
 
 const port = 8000;
-app.listen(port, () =>{
+app.listen((port), () =>{
     console.log('Server is running on port ${port}');
 })
