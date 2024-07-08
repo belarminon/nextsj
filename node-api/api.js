@@ -19,12 +19,13 @@ app.get("/events/:eventId", async (req, res) => {
 });
 
 app.post("/events/:eventId/reserve", async (req, res) => {
+    
     const { spots: spotsNameToReserve } = req.body;
     const eventId = parseInt(req.params.eventId);
 
     console.log(spotsNameToReserve, eventId);
 
-    spotsNameToReserve.array.forEach(spotNameToReserve => {
+    spotsNameToReserve.forEach(spotNameToReserve => {
         const spot = spots.find(
             spot =>
                 spot.event_id === eventId && spot.name === spotNameToReserve

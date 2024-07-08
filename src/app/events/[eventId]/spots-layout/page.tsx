@@ -1,5 +1,6 @@
 import { EventModel, SpotModel, SpotStatus } from "@/app/models";
 import { SpotSeat } from "@/components/SpotSeat";
+import { cookies } from "next/headers";
 import Link from "next/link";
 
 async function getSpots(eventId: number): Promise<{ event: EventModel, spots: SpotModel[] }> {
@@ -10,8 +11,17 @@ async function getSpots(eventId: number): Promise<{ event: EventModel, spots: Sp
 };
 
 async function reserveSpots(formData: FormData) {
+    
     "use server";
-    console.log(formData);
+    const spots = formData.getAll("spots");
+    const cookieStore = cookies();
+
+    if (spots.length == 0) {
+        return {error: "Selecione ao menos um assento."};
+    }
+
+    cookieStore.set('spots', JSON.stringify(spots));
+    cookieStore.set('eventId', formData.get("eventId") as string);
 }
 
 async function SpotsLayoutPage({ params }: { params: { eventId: string } }) {
@@ -30,8 +40,12 @@ async function SpotsLayoutPage({ params }: { params: { eventId: string } }) {
         }
     });
 
+    const reservedSpotRaw = cookies().get('spots')?.value;
+    const reservedSpots = reservedSpotRaw ? JSON.parse(reservedSpotRaw) :[];
+
     return (
         <form action = {reserveSpots}>
+            <input type="hidden" name="eventId" value={event.id} />
             <main className="container mx-auto py-8 px-4">
                 <h1 className="text-3xl font-bold mb-8">Assentos</h1>
                 {
@@ -52,7 +66,7 @@ async function SpotsLayoutPage({ params }: { params: { eventId: string } }) {
                         </div>
                     ))
                 }
-                <p className="text-black mt-2">Assentos escolhidos:</p>
+                <p className="text-black mt-2">Assentos escolhidos: {reservedSpots.join(", ")}</p>
                 <p className="mt-2">
                     <button type="submit" className="bg-white hover:bg-gray-700 hover:text-white text-black font-bold py-2 px-4 rounded">
                         Reservar
