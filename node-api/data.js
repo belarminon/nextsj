@@ -15,7 +15,7 @@ module.exports = {
             event_date: "2022-05-26T16:20:00",
             image_url: "https://images.sk-static.com/images/media/profile_images/artists/2083334/huge_avatar",
             created_at: "2022-05-26T16:20:10",
-            available_spots: 22,
+            available_spots: 20,
             price: 220
         },
         {

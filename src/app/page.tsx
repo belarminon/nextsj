@@ -4,10 +4,15 @@ import Link from "next/link";
 
 async function getEvents(): Promise<EventModel[]> {
   const response = await fetch('http://localhost:8000/events', {
-    cache: "no-store" //sem cache algum
+    // cache: "no-store" //sem cache algum
     // next:{
     //   revalidate: 10 // revalida em 10 segundos
     // }
+
+    next:{
+      tags: ["events"],
+    }
+    
   });
   return response.json();
 }

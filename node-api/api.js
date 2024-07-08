@@ -39,10 +39,12 @@ app.post("/events/:eventId/reserve", async (req, res) => {
             event.available_spots = event.available_spots - 1;
         }
     });
-    // await fetch('http://localhost:3000/api/events/${eventId}/revalidate', {
 
-    //     method: "POST",
-    // });
+    await fetch(`http://localhost:3000/api/events/${eventId}/revalidate`, {
+
+        method: "POST",
+    });
+
     return res.json({
         message: "Spots reserver successfully",
     });

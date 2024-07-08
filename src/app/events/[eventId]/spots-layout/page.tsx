@@ -3,15 +3,21 @@ import { SpotSeat } from "@/components/SpotSeat";
 import { cookies } from "next/headers";
 import Link from "next/link";
 
-async function getSpots(eventId: number): Promise<{ event: EventModel, spots: SpotModel[] }> {
+async function getSpots(eventId: number)
+: Promise<{ event: EventModel, spots: SpotModel[] }> {
     const response = await fetch(`http://localhost:8000/events/${eventId}`, {
-        cache: "no-store"
+        // cache: "no-store"
+
+        next:{
+            tags:[`events/${eventId}`],
+        }
+
     });
     return response.json();
 };
 
 async function reserveSpots(formData: FormData) {
-    
+
     "use server";
     const spots = formData.getAll("spots");
     const cookieStore = cookies();
@@ -58,7 +64,7 @@ async function SpotsLayoutPage({ params }: { params: { eventId: string } }) {
                                         key={key}
                                         spotId={spot.name}
                                         spotLabel={spot.name.slice(1)}
-                                        reserve={false}
+                                        reserve={reservedSpots.includes(spot.name)}
                                         disabled={spot.status === SpotStatus.sold}
                                     />
                                 ))}
