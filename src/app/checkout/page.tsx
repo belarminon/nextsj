@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export async function checkoutAction(formData: FormData) {
     'use server'
@@ -29,6 +30,8 @@ export async function checkoutAction(formData: FormData) {
             "Content-type":"application/json",
         },
     });
+
+    redirect("/");
 }
 
 async function CheckoutPage() {
