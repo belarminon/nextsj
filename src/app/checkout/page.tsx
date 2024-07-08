@@ -31,6 +31,9 @@ export async function checkoutAction(formData: FormData) {
         },
     });
 
+    cookiesStore.set("spots", "")
+    cookiesStore.set("eventId", "")
+
     redirect("/");
 }
 
